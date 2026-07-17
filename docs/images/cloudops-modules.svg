@@ -1,0 +1,47 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F6F3E8"/>
+  <text x="74" y="88" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900">CloudOps Hub Modules</text>
+  <text x="76" y="124" fill="#4B5563" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Every core workflow is wired to backend APIs and persistent data models.</text>
+  <g font-family="Inter, Arial, sans-serif" font-weight="900">
+    <g>
+      <rect x="76" y="184" width="330" height="120" fill="#FFFFFF" stroke="#111827" stroke-width="4"/>
+      <text x="110" y="235" fill="#111827" font-size="27">IAM Security Audit</text>
+      <text x="110" y="270" fill="#4B5563" font-size="16">MFA, access keys, root usage</text>
+    </g>
+    <g>
+      <rect x="476" y="184" width="330" height="120" fill="#FFE17C" stroke="#111827" stroke-width="4"/>
+      <text x="510" y="235" fill="#111827" font-size="27">EC2 Management</text>
+      <text x="510" y="270" fill="#4B5563" font-size="16">Launch, start, stop, terminate</text>
+    </g>
+    <g>
+      <rect x="876" y="184" width="330" height="120" fill="#DFF7E9" stroke="#111827" stroke-width="4"/>
+      <text x="910" y="235" fill="#111827" font-size="27">VPC Builder</text>
+      <text x="910" y="270" fill="#4B5563" font-size="16">CIDR, subnets, gateway design</text>
+    </g>
+    <g>
+      <rect x="76" y="354" width="330" height="120" fill="#DBEAFE" stroke="#111827" stroke-width="4"/>
+      <text x="110" y="405" fill="#111827" font-size="27">Cloud Security WAF</text>
+      <text x="110" y="440" fill="#4B5563" font-size="16">Rules, rate limits, analytics</text>
+    </g>
+    <g>
+      <rect x="476" y="354" width="330" height="120" fill="#FFFFFF" stroke="#111827" stroke-width="4"/>
+      <text x="510" y="405" fill="#111827" font-size="27">CI/CD Center</text>
+      <text x="510" y="440" fill="#4B5563" font-size="16">Build records and deployment flow</text>
+    </g>
+    <g>
+      <rect x="876" y="354" width="330" height="120" fill="#FDE68A" stroke="#111827" stroke-width="4"/>
+      <text x="910" y="405" fill="#111827" font-size="27">Reports</text>
+      <text x="910" y="440" fill="#4B5563" font-size="16">Security, cost, deployment exports</text>
+    </g>
+    <g>
+      <rect x="276" y="524" width="330" height="120" fill="#E0E7FF" stroke="#111827" stroke-width="4"/>
+      <text x="310" y="575" fill="#111827" font-size="27">Monitoring</text>
+      <text x="310" y="610" fill="#4B5563" font-size="16">CloudWatch metrics and alerts</text>
+    </g>
+    <g>
+      <rect x="676" y="524" width="330" height="120" fill="#FFFFFF" stroke="#111827" stroke-width="4"/>
+      <text x="710" y="575" fill="#111827" font-size="27">Admin + Org</text>
+      <text x="710" y="610" fill="#4B5563" font-size="16">Users, roles, settings, audit logs</text>
+    </g>
+  </g>
+</svg>

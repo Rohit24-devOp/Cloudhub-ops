@@ -1,0 +1,53 @@
+<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="720" fill="#F6F3E8"/>
+  <rect x="28" y="28" width="1224" height="664" rx="14" fill="#101820" stroke="#111827" stroke-width="4"/>
+  <rect x="292" y="50" width="934" height="620" rx="10" fill="#FFFDF3" stroke="#111827" stroke-width="3"/>
+  <rect x="52" y="54" width="204" height="592" rx="10" fill="#151E27" stroke="#FFE17C" stroke-width="2"/>
+  <text x="78" y="102" fill="#FFE17C" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900">CloudOps</text>
+  <text x="78" y="132" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="900">Hub</text>
+  <text x="78" y="170" fill="#7DD3FC" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="800">CODTECH IT SOLUTIONS</text>
+  <g font-family="Inter, Arial, sans-serif" font-size="17" font-weight="800">
+    <rect x="76" y="218" width="154" height="42" fill="#FFE17C" stroke="#111827" stroke-width="2"/>
+    <text x="104" y="245" fill="#111827">Dashboard</text>
+    <text x="104" y="300" fill="#F9FAFB">IAM Audit</text>
+    <text x="104" y="352" fill="#F9FAFB">EC2</text>
+    <text x="104" y="404" fill="#F9FAFB">VPC Builder</text>
+    <text x="104" y="456" fill="#F9FAFB">CI/CD</text>
+    <text x="104" y="508" fill="#F9FAFB">Reports</text>
+  </g>
+  <text x="332" y="104" fill="#22C55E" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="900">PRODUCTION WORKSPACE</text>
+  <text x="332" y="154" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="48" font-weight="900">AWS operations command center</text>
+  <rect x="1032" y="84" width="142" height="46" fill="#FFE17C" stroke="#111827" stroke-width="3"/>
+  <text x="1064" y="113" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="900">Deploy</text>
+  <g stroke="#111827" stroke-width="3">
+    <rect x="332" y="196" width="204" height="128" fill="#FFFFFF"/>
+    <rect x="558" y="196" width="204" height="128" fill="#FFFFFF"/>
+    <rect x="784" y="196" width="204" height="128" fill="#FFFFFF"/>
+    <rect x="1010" y="196" width="164" height="128" fill="#FFFFFF"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="356" y="234" fill="#6B7280" font-size="14" font-weight="900">SECURITY SCORE</text>
+    <text x="356" y="288" fill="#111827" font-size="50" font-weight="900">92</text>
+    <text x="582" y="234" fill="#6B7280" font-size="14" font-weight="900">RUNNING EC2</text>
+    <text x="582" y="288" fill="#111827" font-size="50" font-weight="900">18</text>
+    <text x="808" y="234" fill="#6B7280" font-size="14" font-weight="900">OPEN FINDINGS</text>
+    <text x="808" y="288" fill="#111827" font-size="50" font-weight="900">04</text>
+    <text x="1034" y="234" fill="#6B7280" font-size="14" font-weight="900">COST</text>
+    <text x="1034" y="288" fill="#111827" font-size="42" font-weight="900">$8.4K</text>
+  </g>
+  <rect x="332" y="358" width="530" height="242" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+  <text x="360" y="404" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="900">Infrastructure performance</text>
+  <path d="M365 546 C430 484 495 534 548 474 C598 418 650 512 704 458 C756 406 800 438 834 390" stroke="#22C55E" stroke-width="8" fill="none"/>
+  <path d="M365 575 C428 552 466 580 532 536 C594 492 636 560 700 524 C760 490 804 512 834 474" stroke="#3B82F6" stroke-width="8" fill="none"/>
+  <g stroke="#E5E7EB" stroke-width="2">
+    <path d="M360 450H834"/>
+    <path d="M360 500H834"/>
+    <path d="M360 550H834"/>
+  </g>
+  <rect x="896" y="358" width="278" height="242" fill="#FFFFFF" stroke="#111827" stroke-width="3"/>
+  <text x="924" y="404" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="25" font-weight="900">Security posture</text>
+  <circle cx="1035" cy="494" r="62" fill="#DFF7E9" stroke="#111827" stroke-width="3"/>
+  <text x="995" y="510" fill="#111827" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="900">92</text>
+  <rect x="932" y="566" width="206" height="14" fill="#E5E7EB"/>
+  <rect x="932" y="566" width="178" height="14" fill="#22C55E"/>
+</svg>

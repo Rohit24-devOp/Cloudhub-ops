@@ -11,6 +11,16 @@ CloudOps Hub is a production-oriented cloud operations SaaS built for **CodTech 
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ed?style=for-the-badge&logo=docker&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-Boto3-ff9900?style=for-the-badge&logo=amazonaws&logoColor=101820)
 
+## Project Preview
+
+![CloudOps Hub dashboard](docs/images/cloudops-dashboard.svg)
+
+## Platform Visuals
+
+| Architecture | Product modules |
+| --- | --- |
+| ![CloudOps Hub architecture](docs/images/cloudops-architecture.svg) | ![CloudOps Hub modules](docs/images/cloudops-modules.svg) |
+
 ## What Is Included
 
 | Area | Implementation |
