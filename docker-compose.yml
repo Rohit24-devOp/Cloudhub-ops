@@ -1,0 +1,39 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: cloudops
+      POSTGRES_USER: cloudops
+      POSTGRES_PASSWORD: cloudops-local
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  backend:
+    build: ./apps/backend
+    environment:
+      CLOUDOPS_DATABASE_URL: postgresql+psycopg://cloudops:cloudops-local@postgres:5432/cloudops
+      CLOUDOPS_REDIS_URL: redis://redis:6379/0
+      CLOUDOPS_JWT_SECRET: local-development-secret
+      CLOUDOPS_CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+    depends_on:
+      - postgres
+      - redis
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./apps/frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+volumes:
+  postgres_data:

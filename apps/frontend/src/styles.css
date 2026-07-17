@@ -1,0 +1,32 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Inter, ui-sans-serif, system-ui, Arial, sans-serif; color: #111827; background: #f6f3e8; }
+button { border: 2px solid #111827; background: #ffe17c; box-shadow: 4px 4px 0 #111827; padding: 0.75rem 1rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; }
+.login { min-height: 100vh; display: grid; place-items: center; padding: 2rem; background: #101820; color: white; }
+.login section { max-width: 760px; }
+.login h1 { font-size: clamp(3rem, 8vw, 7rem); line-height: 0.9; margin: 0; }
+.login p { font-size: 1.2rem; color: #d1d5db; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; font-weight: 900; color: #22c55e; }
+.shell { display: grid; grid-template-columns: 280px 1fr; min-height: 100vh; }
+aside { background: #101820; color: white; padding: 1.5rem; border-right: 3px solid #111827; }
+aside h2 { margin-bottom: 0; }
+aside p { color: #ffe17c; margin-top: 0.25rem; }
+nav { display: grid; gap: 0.5rem; margin-top: 2rem; }
+nav a { display: flex; align-items: center; gap: 0.7rem; padding: 0.8rem; border: 1px solid #374151; color: white; text-decoration: none; }
+main { padding: 1.5rem; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+header h1 { margin: 0; font-size: clamp(2rem, 4vw, 4.5rem); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+.metric, .workbench article { background: white; border: 2px solid #111827; box-shadow: 6px 6px 0 #111827; padding: 1rem; }
+.metric { display: grid; gap: 0.5rem; }
+.metric span { color: #4b5563; font-size: 0.8rem; text-transform: uppercase; font-weight: 800; }
+.metric strong { font-size: 2rem; }
+.workbench { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+.row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.list-row { display: grid; grid-template-columns: 1fr auto auto; gap: 1rem; align-items: center; padding: 0.9rem 0; border-top: 1px solid #e5e7eb; }
+.list-row small { color: #6b7280; }
+@media (max-width: 900px) {
+  .shell { grid-template-columns: 1fr; }
+  aside { border-right: 0; border-bottom: 3px solid #111827; }
+  .grid, .workbench { grid-template-columns: 1fr; }
+  header { align-items: flex-start; flex-direction: column; }
+}

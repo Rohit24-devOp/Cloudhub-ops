@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js",
-    "test": "node --check server.js && node --check main.js"
+    "test": "node --check server.js && node --check main.js",
+    "backend:dev": "cd apps/backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "frontend:dev": "cd apps/frontend && npm run dev",
+    "compose:up": "docker compose up --build",
+    "compose:down": "docker compose down"
   }
 }

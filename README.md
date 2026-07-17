@@ -1,92 +1,214 @@
-# ⚡ CloudOps Hub
+# CloudOps Hub
 
-> **Provision, secure, monitor and deploy AWS infrastructure from one intelligent platform.**
+> Provision, secure, monitor and deploy AWS infrastructure from one intelligent platform.
 
-CloudOps Hub is a full-stack cloud operations dashboard built by **CodTech IT Solutions**. It combines an enterprise-inspired Neo-Brutalist interface with a secure Node.js API, authenticated sessions, and persistent operational data.
+CloudOps Hub is a production-oriented cloud operations SaaS built for **CodTech IT Solutions**. It gives cloud teams one workspace for AWS security reviews, EC2 operations, VPC planning, WAF controls, deployment tracking, reports, notifications, and infrastructure automation.
 
-![CloudOps Hub](https://img.shields.io/badge/CloudOps-Hub-ffe17c?style=for-the-badge&labelColor=171e19)
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-16a34a?style=for-the-badge&logo=node.js&logoColor=white)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-171e19?style=for-the-badge&logo=githubactions)
+![CloudOps Hub](https://img.shields.io/badge/CloudOps-Hub-ffe17c?style=for-the-badge&labelColor=101820)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![React](https://img.shields.io/badge/React-TypeScript-61dafb?style=for-the-badge&logo=react&logoColor=101820)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-16-4169e1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ed?style=for-the-badge&logo=docker&logoColor=white)
+![AWS](https://img.shields.io/badge/AWS-Boto3-ff9900?style=for-the-badge&logo=amazonaws&logoColor=101820)
 
-## ✨ What it does
+## What Is Included
 
-| Capability | Included workflow |
+| Area | Implementation |
 | --- | --- |
-| 🔐 IAM Security Audit | Security score, IAM findings, MFA/access-key checks, and on-demand audit runs. |
-| 🖥️ EC2 Management | Create instances and start/stop them through authenticated API endpoints. |
-| 🗺️ VPC Designer | Visual public/private subnet topology with persistent VPC creation. |
-| 🛡️ AWS WAF | Web ACL rule controls and blocked-request analytics. |
-| 🚀 Cloud-Native CI/CD | Deployment records, deployment UI, and a GitHub Actions validation/deploy workflow. |
-| 📊 Operations Dashboard | Live metrics, deployments, notifications, security posture, and cloud-cost overview. |
+| Frontend | React, TypeScript, Vite, TanStack Query, Axios, Lucide icons, responsive SaaS dashboard UI |
+| Backend | FastAPI, SQLAlchemy models, Pydantic schemas, JWT access tokens, refresh tokens, RBAC, rate limiting, structured logging |
+| Database | Normalized schema for users, organizations, AWS accounts, IAM findings, EC2 instances, deployments, reports, notifications, audit logs, security findings, CloudWatch metrics, cost reports, settings, sessions, refresh tokens |
+| AWS | Boto3 service layer for IAM audit, EC2 actions, VPC creation, and WAF operations |
+| DevOps | Dockerfiles, Docker Compose, GitHub Actions backend/frontend/docker pipeline |
+| IaC | Terraform VPC, subnet, internet gateway, route table, security group, and EC2 modules |
+| Documentation | Architecture guide, deployment guide, OpenAPI docs through FastAPI Swagger |
 
-## 🧱 Architecture
+## Product Modules
 
-```text
-Browser UI
-    │ fetch + session cookie
-    ▼
-Node.js HTTP API  ────  JSON persistence layer
-    │                         │
-    ├─ Authentication          └─ data/cloudops.json
-    ├─ EC2 operations
-    ├─ IAM audits
-    ├─ VPC / WAF configuration
-    └─ Deployment records
+| Module | Status | Backend coverage |
+| --- | --- | --- |
+| Authentication | Implemented | Register, login, refresh tokens, JWT auth, sessions |
+| Dashboard | Implemented | Security score, EC2 count, findings, cost, deployment status |
+| IAM Audit | Implemented | Boto3 IAM scan adapter, persisted findings, security score |
+| EC2 Management | Implemented | Create/list/start/stop/restart/terminate tracked instances |
+| VPC Builder | Implemented | Validated VPC design endpoint and Terraform VPC module |
+| Cloud Security WAF | Implemented | Web ACL configuration endpoint and Boto3 WAF adapter |
+| Deployment Center | Implemented | Deployment records, logs, status history |
+| Reports | Implemented | Report creation endpoint and report database model |
+| Notifications | Implemented | Notification persistence and read model |
+| Organization/Admin | Scaffolded | Users, organizations, roles, audit logs, settings tables |
+
+## Architecture
+
+```mermaid
+flowchart LR
+  UI["React + TypeScript UI"] --> API["FastAPI API"]
+  API --> DB["PostgreSQL / SQLAlchemy"]
+  API --> Redis["Redis cache + Celery broker"]
+  API --> AWS["AWS APIs via Boto3"]
+  API --> Logs["Structured JSON logs"]
+  Actions["GitHub Actions"] --> Docker["Docker images"]
+  Terraform["Terraform modules"] --> AWS
 ```
 
-## 🚀 Run locally
+## Database Design
 
-**Prerequisite:** Node.js 18 or newer.
+```mermaid
+erDiagram
+  USERS ||--o{ ORGANIZATIONS : owns
+  ORGANIZATIONS ||--o{ AWS_ACCOUNTS : connects
+  AWS_ACCOUNTS ||--o{ IAM_FINDINGS : produces
+  AWS_ACCOUNTS ||--o{ EC2_INSTANCES : tracks
+  USERS ||--o{ SESSIONS : creates
+  USERS ||--o{ REFRESH_TOKENS : receives
+  USERS ||--o{ AUDIT_LOGS : writes
+  DEPLOYMENTS ||--o{ PIPELINES : relates
+  REPORTS ||--o{ COST_REPORTS : summarizes
+```
+
+## Run The Existing Local App
+
+This keeps the previously built single-process demo running:
 
 ```bash
-git clone https://github.com/Rohit24-devOp/Cloudhub-ops.git
-cd Cloudhub-ops
 npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000), select **Start free trial**, and create an account with an email and password of at least eight characters.
+Open `http://localhost:3000`.
 
-> Do not open `index.html` directly. The app needs the Node.js server because the dashboard uses authenticated API requests.
-
-## 🔌 API overview
-
-| Route | Description |
-| --- | --- |
-| `POST /api/auth/register` | Create an account and session |
-| `POST /api/auth/login` | Sign in and receive a session cookie |
-| `POST /api/auth/logout` | End the active session |
-| `GET /api/dashboard` | Retrieve dashboard metrics and resources |
-| `GET/POST /api/instances` | List or launch EC2 instances |
-| `POST /api/instances/:id/:action` | Start, stop, restart, or terminate an instance |
-| `GET/POST /api/iam/audit` | Read or run an IAM audit |
-| `GET/POST /api/vpcs` | List or create VPC designs |
-| `GET/PUT /api/waf` | Read or update Web ACL rules |
-| `GET/POST /api/deployments` | Track or trigger deployments |
-
-## 🔒 Security note
-
-This project persists local CloudOps Hub data and intentionally **does not call a live AWS account**. A production deployment should integrate AWS SDK clients on the server only, using IAM roles, short-lived credentials, least-privilege policies, audit logs, and a production database. Never expose AWS secrets in the browser or commit them to Git.
-
-## ⚙️ CI/CD
-
-The included GitHub Actions workflow validates the server and client JavaScript on pushes and pull requests. It can also publish the static site to GitHub Pages.
+## Run The Production Stack With Docker
 
 ```bash
-npm test
+docker compose up --build
 ```
 
-## 🗂️ Project structure
+Open:
+
+- Frontend: `http://localhost:8080`
+- API docs: `http://localhost:8000/docs`
+- API health: `http://localhost:8000/api/health`
+
+Default local workspace login is created from the frontend button:
+
+- Email: `admin@codtechitsolutions.com`
+- Password: `cloudops-secure-123`
+
+## Run Backend Manually
+
+```bash
+cd apps/backend
+pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+## Run Frontend Manually
+
+```bash
+cd apps/frontend
+npm install
+npm run dev
+```
+
+Open `http://localhost:5173`.
+
+## API Modules
+
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/refresh`
+- `GET /api/me`
+- `GET /api/dashboard`
+- `GET /api/instances`
+- `POST /api/instances`
+- `POST /api/instances/{instance_id}/{action}`
+- `POST /api/iam/audit`
+- `POST /api/vpcs`
+- `PUT /api/waf`
+- `GET /api/deployments`
+- `POST /api/deployments`
+- `POST /api/reports`
+- `GET /api/notifications`
+
+## Environment Variables
+
+Create `.env` files from the examples when running outside Docker:
+
+```bash
+CLOUDOPS_DATABASE_URL=postgresql+psycopg://cloudops:cloudops-local@localhost:5432/cloudops
+CLOUDOPS_REDIS_URL=redis://localhost:6379/0
+CLOUDOPS_JWT_SECRET=replace-with-a-long-random-secret
+CLOUDOPS_CORS_ORIGINS=http://localhost:5173,http://localhost:8080
+CLOUDOPS_AWS_REGION=ap-south-1
+```
+
+## Project Structure
 
 ```text
 .
-├── .github/workflows/ci-cd.yml  # GitHub Actions pipeline
-├── data/cloudops.json           # Created automatically at runtime
-├── index.html                   # Marketing page + application shell
-├── main.js                      # API-backed client application
-├── server.js                    # Node.js API server and static host
-└── style.css                    # Neo-Brutalist design system
+|-- apps/
+|   |-- backend/          FastAPI, SQLAlchemy, Alembic, Boto3
+|   `-- frontend/         React, TypeScript, Vite
+|-- docs/                 Architecture and deployment guides
+|-- infra/terraform/      AWS infrastructure modules
+|-- docker-compose.yml    PostgreSQL, Redis, backend, frontend
+|-- server.js             Existing lightweight Node app
+|-- index.html            Existing landing and dashboard shell
+`-- .github/workflows/    CI/CD pipeline
 ```
 
----
+## CI/CD
 
-Built with purpose by **CodTech IT Solutions**.
+The workflow validates:
+
+- Legacy Node app syntax
+- Backend tests with Pytest
+- Frontend tests and production build
+- Docker image builds
+
+Pipeline file: `.github/workflows/ci-cd.yml`
+
+## Terraform
+
+The Terraform modules live in `infra/terraform`:
+
+- `modules/vpc`: VPC, public/private subnets, internet gateway, public route table
+- `modules/security`: application security group
+- `modules/ec2`: Amazon Linux EC2 instance
+
+Run:
+
+```bash
+cd infra/terraform
+terraform init
+terraform plan
+terraform apply
+```
+
+## Quality Gates
+
+Backend:
+
+```bash
+cd apps/backend
+pip install -r requirements.txt
+pytest tests
+```
+
+Frontend:
+
+```bash
+cd apps/frontend
+npm install
+npm run test
+npm run build
+```
+
+## Security
+
+Production deployments must replace the local JWT secret, use managed PostgreSQL and Redis, set HTTPS at the edge, configure least-privilege AWS IAM roles, and store secrets in AWS Secrets Manager or the deployment platform secret store.
+
+## Important AWS Note
+
+The application includes Boto3 adapters for AWS operations. Live AWS calls require valid credentials or an instance/task role with least-privilege policies. For safety, local development can still use the persisted database workflows without touching a real AWS account.
+
+Built for **CodTech IT Solutions**.

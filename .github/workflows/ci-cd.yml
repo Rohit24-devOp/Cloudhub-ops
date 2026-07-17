@@ -9,40 +9,55 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: cloudops-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Validate web application
+  legacy-app:
+    name: Validate legacy Node app
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Validate client JavaScript
-        run: node --check main.js
-      - name: Verify required application files
-        run: test -f index.html && test -f style.css && test -f main.js
+      - run: npm test
 
-  deploy:
-    name: Deploy to GitHub Pages
-    needs: validate
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+  backend:
+    name: Backend tests
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/setup-python@v5
         with:
-          path: .
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          python-version: "3.12"
+      - name: Install backend dependencies
+        run: pip install -r apps/backend/requirements.txt
+      - name: Run backend tests
+        run: pytest apps/backend/tests
+
+  frontend:
+    name: Frontend build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install frontend dependencies
+        working-directory: apps/frontend
+        run: npm install
+      - name: Test and build frontend
+        working-directory: apps/frontend
+        run: npm run test && npm run build
+
+  docker:
+    name: Docker build
+    needs: [backend, frontend, legacy-app]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build production images
+        run: docker compose build
